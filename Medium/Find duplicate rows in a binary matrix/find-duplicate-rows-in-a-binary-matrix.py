@@ -8,7 +8,10 @@ class Solution:
         d={}
         k=-1
         for i in arr:
-            s="".join(str(i))
+            s=""
+            for j in i:
+                s+=str(j)
+            s=int(s,2)
             k+=1
             if s in d:
                 d[s]+=1
