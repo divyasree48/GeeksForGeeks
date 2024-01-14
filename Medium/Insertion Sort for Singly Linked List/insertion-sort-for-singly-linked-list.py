@@ -9,36 +9,42 @@ class Node:
 '''
 
 class Solution:
-    
     def insertionSort(self, head):
+        #code here
         if head==None or head.next==None:
             return head
-        #code here
-        def fun(l):
-            n=len(l)
-            for i in range(1,n):
-                a=l[i]
-                j=i-1
-                while(j>=0 and a<l[j]):
-                    l[j+1]=l[j]
-                    j-=1
-                l[j+1]=a
-        l=[]
-        while(head):
-            l.append(head.data)
-            head=head.next
-        fun(l)
-        ans=Node(l[0])
-        temp=ans
-        for i in range(1,n):
-            x=Node(l[i])
-            temp.next=x
-            temp=temp.next
-        return ans
+        i=head
+        ans=head
+        j=head.next
+        while(j!=None):
             
-        
-        
-        
+            if j.data<i.data:
+                
+                temp1=ans
+                temp=ans
+                while(temp.data<j.data):
+                    temp1=temp
+                    temp=temp.next
+                if temp==ans:
+                    x=j.next
+                    
+                    i.next=x
+                    
+                    j.next=temp
+                    ans=j
+                    j=i.next
+                    
+                else:
+                    x=j.next
+                    i.next=x
+                    temp1.next=j
+                    j.next=temp
+                    j=i.next
+            else:
+                i=i.next
+                j=j.next
+        return ans
+    
         
 
 
